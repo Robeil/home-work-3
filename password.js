@@ -9,10 +9,12 @@ var totalValue = [];
 //ajusting function ,prompt and confirm
 function userInput() {
     var passLengthCon = window.prompt("How many character would you like your password to contain?");
-    if (passLengthCon < 8 || passLengthCon > 129) {
-        alert("password length must be greaterthan 8 and less than 129!");
+    if (passLengthCon < 8) {
+        alert("password length must be at least 8 character");
     }
-
+    else if (password > 129) {
+        alert("password length must be less than 129 character");
+    }
     var lower = confirm("Click Ok to include lowercase character.");
     var upper = confirm("Click Ok to include uppercase character.");
     var num = confirm("Click Ok to include nummeric character.");
@@ -38,7 +40,7 @@ function userInput() {
     }
     console.log(password);
     console.log(totalValue);
-    for (var i = password.length + 1; i < passLengthCon; i++) {
+    for (var i = password.length; i < passLengthCon; i++) {
         password += randomChar(totalValue);
     }
     return password;
@@ -49,7 +51,7 @@ function userInput() {
 // when user sections are over, randomize the order of totalValue
 // Trim off the amount that you would like to return
 
-//creating a random nuumbers from 0-9
+//creating a random nuumbers from 0-9 and generate random number and password
 function randomChar(characterArry) {
     let runNumber = Math.floor(Math.random() * characterArry.length);
     return characterArry[runNumber];
